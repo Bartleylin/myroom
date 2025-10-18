@@ -1,4 +1,4 @@
-// ✅ 改成完整版號（或改用 0.159.0 / 0.158.0 也行）
+// ✅ 用完整 CDN 網址（版本號要帶上）
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js";
 import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js";
 import { CSS2DRenderer, CSS2DObject } from "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/renderers/CSS2DRenderer.js";
