@@ -7,11 +7,8 @@
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="brand">My Room</div>
-  </header>
+  <header class="site-header"><div class="brand">My Room</div></header>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero__title">
       <h1>我的房間 — 幾何方塊 Demo</h1>
@@ -21,7 +18,6 @@
     <!-- Three.js 畫布容器（必要） -->
     <div id="canvas-wrap" class="canvas-wrap" aria-label="3D interactive room"></div>
 
-    <!-- 互動提示 -->
     <div class="hint" aria-hidden="true">
       <span class="hint-desktop">拖曳以環顧房間 • 點擊標示物件</span>
       <span class="hint-mobile">用手指拖曳視角 • 點擊物件</span>
@@ -38,7 +34,7 @@
     </aside>
   </section>
 
-  <!-- 一定要用相對路徑 ./ 才會在 /myroom/ 找到 main.js -->
-  <script type="module" src="./myroom/main.js"></script>
+  <!-- 相對路徑；加 ?v=4 破快取 -->
+  <script type="module" src="./main.js?v=4"></script>
 </body>
 </html>

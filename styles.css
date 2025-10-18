@@ -30,10 +30,7 @@ body {
   position: absolute; z-index: 15; top: 18vh; left: 50%;
   transform: translateX(-50%); text-align: center; padding: 0 16px;
 }
-.hero__title h1 {
-  margin: 0 0 6px; font-size: clamp(24px, 5vw, 48px);
-  text-shadow: 0 2px 12px rgba(0,0,0,.35);
-}
+.hero__title h1 { margin: 0 0 6px; font-size: clamp(24px, 5vw, 48px); text-shadow: 0 2px 12px rgba(0,0,0,.35); }
 .hero__title p { margin: 0; color: var(--muted); }
 
 .canvas-wrap { position: absolute; inset: 0; }
@@ -60,17 +57,10 @@ body {
 .info[aria-hidden="false"] { transform: translateY(0); opacity: 1; pointer-events: auto; }
 .info__head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .info__head h3 { margin: 0; font-size: 16px; color: #111; }
-.btn-close {
-  appearance: none; border: 1px solid #ddd; background: #fff; color: #111;
-  padding: 2px 8px; border-radius: 999px; cursor: pointer;
-}
+.btn-close { appearance: none; border: 1px solid #ddd; background: #fff; color: #111; padding: 2px 8px; border-radius: 999px; cursor: pointer; }
 .info p { margin: 8px 0 0; font-size: 14px; line-height: 1.6; color: #222; }
-.info__link {
-  display: inline-block; margin-top: 10px; font-size: 13px; color: #0066cc;
-  text-decoration: underline;
-}
+.info__link { display: inline-block; margin-top: 10px; font-size: 13px; color: #0066cc; text-decoration: underline; }
 
-/* 3D 上的 label 樣式 */
 .label {
   position: absolute; transform: translate(-50%, -150%);
   background: rgba(255,255,255,.92);
@@ -82,14 +72,12 @@ body {
 }
 .label.is-hover { background: #111; color: #fff; opacity: 1; transform: translate(-50%, -160%) scale(1.02); }
 
-/* RWD */
 @media (max-width: 768px) {
   .hero__title { top: 14vh; }
   .hint-desktop { display: none; }
   .hint-mobile { display: inline; }
 }
 
-/* 深色系面板 */
 @media (prefers-color-scheme: dark) {
   .info { background: var(--panel-dark); color: #fafafa; border-color: rgba(255,255,255,.12); }
   .info__head h3, .info p { color: #fafafa; }
