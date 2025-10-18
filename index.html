@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Room — 3D Hero</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">My Room</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__title">
+      <h1>我的房間 — 幾何方塊 Demo</h1>
+      <p>拖曳視角、點擊物件看介紹</p>
+    </div>
+
+    <!-- Three.js 畫布容器（ID 必須是 canvas-wrap） -->
+    <div id="canvas-wrap" class="canvas-wrap" aria-label="3D interactive room"></div>
+
+    <!-- 互動提示 -->
+    <div class="hint" aria-hidden="true">
+      <span class="hint-desktop">拖曳以環顧房間 • 點擊標示物件</span>
+      <span class="hint-mobile">用手指拖曳視角 • 點擊物件</span>
+    </div>
+
+    <!-- 點擊後的資訊面板（ID 必須對應 JS） -->
+    <aside id="info" class="info" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="info__head">
+        <h3 id="info-title">Title</h3>
+        <button id="info-close" class="btn-close" aria-label="關閉">✕</button>
+      </div>
+      <p id="info-text">Description</p>
+      <a id="info-link" class="info__link" href="#" target="_blank" rel="noopener">了解更多</a>
+    </aside>
+  </section>
+
+  <!-- 一定要用 type="module" 才能載 ESM CDN -->
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
