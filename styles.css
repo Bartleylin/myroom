@@ -70,7 +70,7 @@ body {
   text-decoration: underline;
 }
 
-/* CSS2D 標籤樣式（3D 物件上的 label） */
+/* 3D 上的 label 樣式 */
 .label {
   position: absolute; transform: translate(-50%, -150%);
   background: rgba(255,255,255,.92);

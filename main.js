@@ -1,6 +1,11 @@
+// 使用完整 CDN 網址（瀏覽器端才能解析）
+// 若 jsDelivr 在你網路環境不穩，改用註解的 unpkg 版本即可（兩個要同版號）
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js";
 import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js";
 import { CSS2DRenderer, CSS2DObject } from "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/renderers/CSS2DRenderer.js";
+// import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
+// import { OrbitControls } from "https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js";
+// import { CSS2DRenderer, CSS2DObject } from "https://unpkg.com/three@0.160.0/examples/jsm/renderers/CSS2DRenderer.js";
 
 /** ====== 尺寸參數（單位：公尺）====== */
 const ROOM_W = 3.6;     // 房間寬（左右）
@@ -31,6 +36,12 @@ const panelTitle = document.getElementById("info-title");
 const panelText = document.getElementById("info-text");
 const panelLink = document.getElementById("info-link");
 const btnClose = document.getElementById("info-close");
+
+// 防呆：若沒找到容器就不往下跑（避免空白）
+if (!wrap) {
+  console.error("#canvas-wrap not found. Check your index.html.");
+  throw new Error("Missing #canvas-wrap");
+}
 
 let width = wrap.clientWidth, height = wrap.clientHeight;
 
@@ -102,7 +113,7 @@ const windowHole = new THREE.Mesh(
   new THREE.BoxGeometry(1.6, 1.0, 0.08),
   new THREE.MeshStandardMaterial({ color: 0x333333, emissive: 0x111111 })
 );
-windowHole.position.set(-0.2, 1.3, -ROOM_D/2 + 0.04); // 靠後牆，偏左（依照片）
+windowHole.position.set(-0.2, 1.3, -ROOM_D/2 + 0.04); // 靠後牆，偏左
 scene.add(windowHole);
 
 // 冷氣（簡化）
@@ -179,12 +190,10 @@ function makeShelf() {
   );
   frame.position.y = SHELF_H/2;
   g.add(frame);
-  // 三層線條
   const shelfMat = new THREE.MeshStandardMaterial({ color: 0x9a9a9a });
   [SHELF_H*0.33, SHELF_H*0.66].forEach(h => {
     const shelf = new THREE.Mesh(new THREE.BoxGeometry(SHELF_W*0.98, 0.02, SHELF_D*0.98), shelfMat);
-    shelf.position.set(0, h, 0);
-    g.add(shelf);
+    shelf.position.set(0, h, 0); g.add(shelf);
   });
   return g;
 }
@@ -205,12 +214,7 @@ function makeFishTank() {
   return g;
 }
 
-/** ====== 依照片擺位（可再校正）====== 
- *  - 床：靠右牆、長向順著 Z 軸
- *  - 書桌：床的前方（靠右牆）
- *  - 書櫃：書桌前側靠右牆
- *  - 魚缸：靠後牆偏左、靠窗
- */
+/** ====== 擺位（可再校正）====== */
 const margin = 0.12;
 
 addItem({
@@ -264,14 +268,22 @@ wrap.addEventListener("click", () => {
   openPanel(label, summary, link);
 });
 
+function setPanelOpen(open) {
+  panel.setAttribute("aria-hidden", open ? "false" : "true");
+  if (open) {
+    panel.removeAttribute("inert");
+  } else {
+    panel.setAttribute("inert", "");
+  }
+}
 function openPanel(title, text, link) {
   panelTitle.textContent = title;
   panelText.textContent = text;
   if (link) { panelLink.href = link; panelLink.style.display = "inline-block"; }
   else { panelLink.style.display = "none"; }
-  panel.setAttribute("aria-hidden", "false");
+  setPanelOpen(true);
 }
-btnClose.addEventListener("click", () => panel.setAttribute("aria-hidden", "true"));
+btnClose.addEventListener("click", () => setPanelOpen(false));
 
 /** ====== 相機 / Resize / 迴圈 ====== */
 function resetCamera() {

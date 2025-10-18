@@ -28,7 +28,7 @@
     </div>
 
     <!-- 資訊面板（必要） -->
-    <aside id="info" class="info" role="dialog" aria-modal="true" aria-hidden="true">
+    <aside id="info" class="info" role="dialog" aria-modal="true" aria-hidden="true" inert>
       <div class="info__head">
         <h3 id="info-title">Title</h3>
         <button id="info-close" class="btn-close" aria-label="關閉">✕</button>
@@ -38,7 +38,7 @@
     </aside>
   </section>
 
-  <!-- 重點：一定要是相對路徑 ./ 才會在 /myroom/ 底下找到檔案 -->
+  <!-- 一定要用相對路徑 ./ 才會在 /myroom/ 找到 main.js -->
   <script type="module" src="./main.js"></script>
 </body>
 </html>
