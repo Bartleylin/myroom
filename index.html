@@ -15,7 +15,6 @@
       <p>拖曳視角、點擊物件看介紹</p>
     </div>
 
-    <!-- Three.js 畫布容器（必要） -->
     <div id="canvas-wrap" class="canvas-wrap" aria-label="3D interactive room"></div>
 
     <div class="hint" aria-hidden="true">
@@ -23,7 +22,6 @@
       <span class="hint-mobile">用手指拖曳視角 • 點擊物件</span>
     </div>
 
-    <!-- 資訊面板（必要） -->
     <aside id="info" class="info" role="dialog" aria-modal="true" aria-hidden="true" inert>
       <div class="info__head">
         <h3 id="info-title">Title</h3>
@@ -34,8 +32,7 @@
     </aside>
   </section>
 
-  <!-- 相對路徑；加 ?v=4 破快取 -->
-  <script type="module" src="./main.js?v=6"></script>
+  <!-- 一定要相對路徑，讓 /myroom/ 找到同目錄的 main.js -->
+  <script type="module" src="./main.js?v=7"></script>
 </body>
 </html>
-xw
